@@ -21,6 +21,6 @@ def timed_job():
 
 @sched.scheduled_job('interval', minutes=15)
 def wake_up():
-    print('Hello')
+    r = requests.get('https://lastbotpro.herokuapp.com/')
 
 sched.start()
