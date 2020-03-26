@@ -2,7 +2,7 @@ TOKEN = "4b174377a427d294-7f4611c4c2ec7fcb-6e508f5b5b241329"
 URL = "https://lastbotpro.herokuapp.com/"
 # URL = "https://b1da12f5.ngrok.io/"
 WEBHOOK = URL + '/incoming'
-HELLO_MESSAGE = "Привет! Я Бот из Англии в шестом поколении. Я помогу тебе выучить английский язык. "\
+HELLO_MESSAGE = "Привет! Я Бот из Англии в седьмом поколении. Я помогу тебе выучить английский язык. "\
                "Для начала введи Start или нажми на кнопку внизу"
 
 START_KEYBOARD = {
