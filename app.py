@@ -26,8 +26,8 @@ bot_configuration = BotConfiguration(
 viber = Api(bot_configuration)
 app = Flask(__name__)
 
-# engine = create_engine('postgres://gffjdwwnzugdwv:0aedb1157f72ccb70518230b7c55ce7d40330fffa84398a9dcc41120773d41c4@ec2-46-137-84-140.eu-west-1.compute.amazonaws.com:5432/dv8h0sblah845', poolclass=NullPool, echo = False)
-engine = create_engine('sqlite:///test.db', poolclass=NullPool, echo = False)
+engine = create_engine('postgres://zjrzxkumwdcnia:60489b90eccd12ac2205dde208d7b8c2674066f8f910f06972abbb520ef99b97@ec2-54-75-246-118.eu-west-1.compute.amazonaws.com:5432/d58j2r5jflafee', poolclass=NullPool, echo = False)
+# engine = create_engine('sqlite:///test.db', poolclass=NullPool, echo = False)
 Base = declarative_base()
 
 class Word(Base):
@@ -260,14 +260,14 @@ def set_settings():
     response = make_response(string)
     return response
 
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 portion_words = []
 mes_token = TokenHolder()
 init = False
 @app.route('/incoming', methods = ['POST'])
 def incoming():
-    # Base.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
     global init
     if (init == False):
         initWords()
