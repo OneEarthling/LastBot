@@ -1,20 +1,9 @@
-from settings import TOKEN
+import requests
+
 from settings import WAIT_KEYBOARD
-from viberbot import Api
-from viberbot.api.bot_configuration import BotConfiguration
 from viberbot.api.messages import TextMessage
-from app import START_KEYBOARD, Session, User
+from app import  Session, User, viber
 import datetime
-
-bot_configuration = BotConfiguration(
-    name='EnglishBotPro',
-    avatar='http://viber.com/avatar.jpg',
-    auth_token=TOKEN
-)
-viber = Api(bot_configuration)
-
-# словарь соответствий пользователя и времени последнего напоминания
-users_reminders = {}
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 
@@ -30,5 +19,8 @@ def timed_job():
             viber.send_messages(u.viber_id, [TextMessage(text="Время повторить слова", keyboard=WAIT_KEYBOARD,
                                                          tracking_data='tracking_data')])
 
+@sched.scheduled_job('interval', minutes=15)
+def wake_up():
+    print('Hello')
 
 sched.start()
