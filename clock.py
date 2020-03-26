@@ -19,7 +19,7 @@ def timed_job():
             viber.send_messages(u.viber_id, [TextMessage(text="Время повторить слова", keyboard=WAIT_KEYBOARD,
                                                          tracking_data='tracking_data')])
 
-@sched.scheduled_job('interval', minutes=15)
+@sched.scheduled_job('interval', minutes=10)
 def wake_up():
     r = requests.get('https://lastbotpro.herokuapp.com/')
 
