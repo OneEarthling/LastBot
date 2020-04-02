@@ -180,7 +180,7 @@ def getStat(viber_id):
 def showExample(viber_id):
     session = Session()
     val = (session.query(Word).join(User).filter(User.viber_id == viber_id)).first().examples
-    user = session.query(User).filter(User.viber_id == viber_request_sender_id).first()
+    user = session.query(User).filter(User.viber_id == viber_id).first()
     session.close()
     temp = copy.copy(portion_words)
     random.shuffle(temp)
