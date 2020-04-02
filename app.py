@@ -310,7 +310,7 @@ def incoming():
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
                     session.commit()
                     viber.send_messages(viber_request.sender.id, [TextMessage(text=stat)])
-		    print("getting 4 words in the Start")
+                    print("getting 4 words in the Start")
 		    portion_words = get_four_words_for_user(user.id)
                     # заполнение клавиатуры
                     makeQuestion(viber_request.sender.id, portion_words)
@@ -334,7 +334,7 @@ def incoming():
                             messageKeyboard = KeyboardMessage(tracking_data='tracking_data', keyboard=START_KEYBOARD)
                             viber.send_messages(viber_request.sender.id, [willContinue, messageKeyboard])
                         else:
-			    print("getting 4 words in the end")
+                            print("getting 4 words in the end")
                             portion_words = get_four_words_for_user(user.id)
                             # заполнение клавиатуры
                             makeQuestion(viber_request.sender.id, portion_words)
