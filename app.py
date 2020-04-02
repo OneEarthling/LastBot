@@ -141,8 +141,8 @@ def get_four_words_for_user(user_id):
     return list
 
 def makeQuestion(viber_request_sender_id, portion_words):
-	print("make question")
-	print(portion_words)
+    print("make question")
+    print(portion_words)
     session = Session()
     # заполнение клавиатуры
     user = session.query(User).filter(User.viber_id == viber_request_sender_id).first()
