@@ -321,8 +321,6 @@ def incoming():
                     resp = showExample(viber_request.sender.id)
                     viber.send_messages(viber_request.sender.id, [
                         TextMessage(text=resp)])
-                    # заполнение клавиатуры
-                    makeQuestion(viber_request.sender.id, portion_words)
                 elif text == "Dismiss":
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
                     session.commit()
