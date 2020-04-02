@@ -180,8 +180,19 @@ def getStat(viber_id):
 def showExample(viber_id):
     session = Session()
     val = (session.query(Word).join(User).filter(User.viber_id == viber_id)).first().examples
+	user = session.query(User).filter(User.viber_id == viber_request_sender_id).first()
     session.close()
-    return val
+	temp = copy.copy(portion_words)
+    random.shuffle(temp)
+    for button, w in zip(SAMPLE_KEYBOARD["Buttons"], temp):
+        temp_question = {'question_number': f'{user.questionCount_session}',
+                         'answer': f"{w.translation}"}
+        button["Text"] = w.translation
+        button["ActionBody"] = f'{[user.questionCount_session, w.translation]}'
+    messageKeyboard = KeyboardMessage(tracking_data='tracking_data', keyboard=SAMPLE_KEYBOARD)
+    viber.send_messages(viber_request_sender_id, [
+        TextMessage(text=val), messageKeyboard
+    ])
 
 def checkAnswer(viber_id, text):
     print('checking answer')
@@ -318,9 +329,7 @@ def incoming():
                     makeQuestion(viber_request.sender.id, portion_words)
                 elif text == "showExample":
                     print("!!!!!!!!")
-                    resp = showExample(viber_request.sender.id)
-                    viber.send_messages(viber_request.sender.id,[
-                        TextMessage(text=resp), KeyboardMessage(tracking_data='tracking_data', keyboard=SAMPLE_KEYBOARD)])
+                    showExample(viber_request.sender.id)
                 elif text == "Dismiss":
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
                     session.commit()
