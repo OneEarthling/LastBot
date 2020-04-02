@@ -152,7 +152,7 @@ def makeQuestion(viber_request_sender_id, portion_words):
     whichWordMessage = f'Вопрос №{user.questionCount_session + 1}. Как переводится слово {curWord.word}?'
     temp = copy.copy(portion_words)
     random.shuffle(temp)
-    for button, w in zip(SAMPLE_KEYBOARD["Buttons"], portion_words):
+    for button, w in zip(SAMPLE_KEYBOARD["Buttons"], temp):
         temp_question = {'question_number': f'{user.questionCount_session}',
                          'answer': f"{w.translation}"}
         button["Text"] = w.translation
