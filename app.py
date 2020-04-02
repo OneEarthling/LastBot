@@ -319,8 +319,8 @@ def incoming():
                 elif text == "showExample":
                     print("!!!!!!!!")
                     resp = showExample(viber_request.sender.id)
-                    viber.send_messages(viber_request.sender.id, [
-                        TextMessage(text=resp)])
+                    viber.send_messages(viber_request.sender.id,
+                        TextMessage(text=resp), KeyboardMessage(tracking_data='tracking_data', keyboard=SAMPLE_KEYBOARD))
                 elif text == "Dismiss":
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
                     session.commit()
