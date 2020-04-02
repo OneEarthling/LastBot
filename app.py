@@ -310,8 +310,8 @@ def incoming():
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
                     session.commit()
                     viber.send_messages(viber_request.sender.id, [TextMessage(text=stat)])
-	 	    print("getting 4 words in the Start")
-                    portion_words = get_four_words_for_user(user.id)
+		    print("getting 4 words in the Start")
+		    portion_words = get_four_words_for_user(user.id)
                     # заполнение клавиатуры
                     makeQuestion(viber_request.sender.id, portion_words)
                 elif text == "showExample":
