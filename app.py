@@ -243,7 +243,12 @@ def hello():
 
 @app.route("/settings")
 def settings():
-    return render_template('settings.html')
+    session = Session()
+    set = session.query(Settings).first()
+    if set == None:
+        initSettings()
+    session.close()
+    return render_template('settings.html', deltatime_reminder = set.deltatime_reminder, session_words = set.session_words, rightanswers_tolearnt = set.rightanswers_tolearnt)
 
 @app.route('/set_settings', methods = [ 'GET'] )
 def set_settings():
