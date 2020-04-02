@@ -26,7 +26,7 @@ bot_configuration = BotConfiguration(
 viber = Api(bot_configuration)
 app = Flask(__name__)
 
-engine = create_engine('postgres://nnsmcdvdgkveeq:38b957cbd093971597f237f12fc4ce9da4aef3b80324f932b4c26bb0918dd12d@ec2-34-225-82-212.compute-1.amazonaws.com:5432/da7hlr88cdlv06', poolclass=NullPool, echo = False)
+engine = create_engine('postgres://zjrzxkumwdcnia:60489b90eccd12ac2205dde208d7b8c2674066f8f910f06972abbb520ef99b97@ec2-54-75-246-118.eu-west-1.compute.amazonaws.com:5432/d58j2r5jflafee', poolclass=NullPool, echo = False)
 # engine = create_engine('sqlite:///test.db', poolclass=NullPool, echo = False)
 Base = declarative_base()
 
