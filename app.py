@@ -180,9 +180,9 @@ def getStat(viber_id):
 def showExample(viber_id):
     session = Session()
     val = (session.query(Word).join(User).filter(User.viber_id == viber_id)).first().examples
-	user = session.query(User).filter(User.viber_id == viber_request_sender_id).first()
+    user = session.query(User).filter(User.viber_id == viber_request_sender_id).first()
     session.close()
-	temp = copy.copy(portion_words)
+    temp = copy.copy(portion_words)
     random.shuffle(temp)
     for button, w in zip(SAMPLE_KEYBOARD["Buttons"], temp):
         temp_question = {'question_number': f'{user.questionCount_session}',
@@ -195,7 +195,7 @@ def showExample(viber_id):
     ])
 
 def checkAnswer(viber_id, text):
-    #print('checking answer')
+    print('checking answer')
     text = eval(text)
     print(text)
     session = Session()
