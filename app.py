@@ -182,6 +182,7 @@ def showExample(viber_id):
     val = (session.query(Word).join(User).filter(User.viber_id == viber_id)).first().examples
     user = session.query(User).filter(User.viber_id == viber_id).first()
     session.close()
+    print('showExample inner')
     temp = copy.copy(portion_words)
     random.shuffle(temp)
     for button, w in zip(SAMPLE_KEYBOARD["Buttons"], temp):
@@ -328,7 +329,7 @@ def incoming():
                     # заполнение клавиатуры
                     makeQuestion(viber_request.sender.id, portion_words)
                 elif text == "showExample":
-                    print("!!!!!!!!")
+                    print("!")
                     showExample(viber_request.sender.id)
                 elif text == "Dismiss":
                     user.time_reminder = datetime.datetime.utcnow() + datetime.timedelta(minutes=set.deltatime_reminder)
