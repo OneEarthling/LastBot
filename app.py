@@ -195,7 +195,7 @@ def showExample(viber_id):
     ])
 
 def checkAnswer(viber_id, text):
-    print('checking answer')
+    #print('checking answer')
     text = eval(text)
     print(text)
     session = Session()
