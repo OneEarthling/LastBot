@@ -32,6 +32,7 @@ def timed_job():
                                                          tracking_data='tracking_data')])
             except:
                 print("Пользователь отписался")
+                print(u.full_name)
     session.close()
 
 @sched.scheduled_job('interval', minutes=10)
