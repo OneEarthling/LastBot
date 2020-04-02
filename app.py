@@ -190,7 +190,7 @@ def showExample(viber_id):
         button["Text"] = w.translation
         button["ActionBody"] = f'{[user.questionCount_session, w.translation]}'
     messageKeyboard = KeyboardMessage(tracking_data='tracking_data', keyboard=SAMPLE_KEYBOARD)
-    viber.send_messages(viber_request_sender_id, [
+    viber.send_messages(viber_id, [
         TextMessage(text=val), messageKeyboard
     ])
 
